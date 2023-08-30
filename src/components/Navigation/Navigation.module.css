@@ -1,0 +1,22 @@
+.nav {
+  @media screen and (max-width: 899px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 700;
+    color: #000;
+
+    @media screen and (min-width: 900px) {
+      color: #fff;    
+    }
+  }
+
+  .activeLink {
+    color: #e84a5f;
+  }

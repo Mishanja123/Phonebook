@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from '../../redux/contacts/filterSlice'
+import { selectFilter } from '../../redux/contacts/selectors';
 
-import { setFilter } from '../../redux/filterSlice'
-import { selectFilter } from '../../redux/selectors';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-import css  from "./Filter.module.css";
 
 
 export const Filter = () => {
-
   const dispatch = useDispatch() 
   const filter = useSelector(selectFilter);
 
@@ -17,20 +18,31 @@ export const Filter = () => {
   };
 
     return (
-        <form className={css.form}>
-        <label className= {css.lable}>
-          Find contacts by name
-        <input
-         className={css.input}
-         htmlFor="filter"
-         type="text"
-         name="filter"
-         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-         placeholder="Enter contact Name"
-         onChange={handleFilterChange}
-         value={filter.value}
-        />
-      </label>
-      </form>
+        <>
+          <Typography component="h1" variant="h5"
+            sx={{
+                marginTop: 3,
+                textAlign: 'center',
+            }}
+          >
+            Your contacts
+          </Typography>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              label="Enter name"
+              name="filter"
+              type="text"
+              placeholder="Jason Statham"
+              autoComplete="name"
+              value={filter.value}
+              pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              onChange={handleFilterChange}
+            />
+          </Box>
+        </>
   );
 };
