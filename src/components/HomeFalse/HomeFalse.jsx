@@ -3,7 +3,7 @@ import css from './HomeFalse.module.css';
 
 export const HomeFalse = () => {
     return (
-      <div className={css.homeBox}>
+      <div className={css.wrapper}>
         <p className={css.username}>Hello! Please</p>
         <NavLink className={css.link} to="/login">
           Log-In
